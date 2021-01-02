@@ -1,0 +1,27 @@
+.page-content {
+  --background: #ffffff url("./assets/logo_only.png") no-repeat fixed center;
+}
+
+.page-content-plain {
+  --background: #ffffff;
+}
+
+.donate-tab {
+  --color-selected: var(--ion-color-app-blood-color);
+  --color-focused: var(--ion-color-app-blood-color);
+  --ripple-color: var(--ion-color-app-blood-color);
+}
+
+.request-tab {
+  --color-selected: var(--ion-color-app-blood-color);
+  --color-focused: var(--ion-color-app-blood-color);
+  --ripple-color: var(--ion-color-app-blood-color);
+}
+
+.app-button {
+  margin-top: 16px;
+}
+
+.app-button-outline {
+  background: #ffffff;
+}

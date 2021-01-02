@@ -1,0 +1,19 @@
+.image-logo {
+  height: 64px;
+  width: auto;
+  margin-top: 20%; /* 48px */
+  margin-bottom: 48px;
+}
+
+@media screen and (min-height: 768px) {
+  .image-logo {
+    margin-top: 30%; /* 120px */
+  }
+}
+
+@media screen and (max-height: 568px) {
+  .image-logo {
+    margin-top: 32px;
+    margin-bottom: 24px;
+  }
+}

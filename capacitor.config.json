@@ -1,0 +1,14 @@
+{
+  "appId": "com.mentalscripts.healthcareplus",
+  "appName": "Health Care Plus",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
+    }
+  },
+  "cordova": {},
+  "windowsAndroidStudioPath": "C:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2020.2.4\\bin\\idea64.exe"
+}

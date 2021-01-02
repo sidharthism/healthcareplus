@@ -1,0 +1,36 @@
+.blood-request-card {
+  --background: #ffffff url("../assets/logo_only_small.png") no-repeat center
+    center;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-title .caption {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.number-of-units {
+  font-weight: 600;
+  padding: 7.5px 15px;
+  border-radius: 100%;
+  vertical-align: middle;
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.number-of-units span {
+  vertical-align: middle;
+}
+
+.blood-group {
+  font-size: 20px;
+}
+
+.is-critical {
+  font-size: 16px;
+  font-weight: bold;
+}

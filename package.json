@@ -1,0 +1,48 @@
+{
+  "name": "health-care-plus",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "ionic serve",
+    "build": "ionic build",
+    "serve-android": "ionic capacitor run android --livereload --external"
+  },
+  "dependencies": {
+    "@capacitor/android": "2.4.2",
+    "@capacitor/core": "2.4.2",
+    "@ionic/react": "5.4.0-dev.202009041201.3d9e296",
+    "@ionic/react-router": "5.4.0-dev.202009041201.3d9e296",
+    "firebase": "^8.2.1",
+    "ionicons": "^5.0.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "2.4.2",
+    "@ionic/cli": "6.11.9",
+    "@types/node": "^12.12.24",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-router": "^5.1.4",
+    "@types/react-router-dom": "^5.1.3",
+    "react-scripts": "3.4.3",
+    "typescript": "3.8.3"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

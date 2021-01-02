@@ -1,0 +1,5 @@
+1. On input elements, the keyboard pushes the app along with the background.
+2. Redirection issue on exact path /my - almost fixed - any path after /my/unknown will not return NotFoundPage
+3. Abrupt loading of login and signup pages without animation
+4. While entering input, keyboard hides the bottom part of page (No keyboard aware scroll)
+5. Issue with router on pressing back button - Persistent duplicate routes (logon <-> signup) - almost fixed
