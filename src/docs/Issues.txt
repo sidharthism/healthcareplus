@@ -3,3 +3,6 @@
 3. Abrupt loading of login and signup pages without animation
 4. While entering input, keyboard hides the bottom part of page (No keyboard aware scroll)
 5. Issue with router on pressing back button - Persistent duplicate routes (logon <-> signup) - almost fixed
+6. Ref 5 - Almostt same routing problem with tab navigation after logging in.
+7. 3. Abrupt redirection to login without animation on logging out
+8. Main app-loading-indicator styles are not being applied. (LoginSignupPage.css)

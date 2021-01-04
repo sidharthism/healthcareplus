@@ -1,0 +1,7 @@
+// UPDATING DATA
+
+https://firebase.google.com/docs/firestore/query-data/listen#web_3
+onSnapshot - does the function only return the updated docs or all docs matching query
+
+example using realtime database
+https://css-tricks.com/building-a-real-time-chat-app-with-react-and-firebase/#top-of-site

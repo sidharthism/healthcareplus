@@ -1,3 +1,31 @@
+export enum BloodGroup {
+  A_p = "A+",
+  A_n = "A-",
+  B_p = "B+",
+  B_n = "B-",
+  O_p = "O+",
+  O_n = "O-",
+  AB_p = "AB+",
+  AB_n = "AB-",
+}
+
+export interface BloodRequirement {
+  blood_group: BloodGroup;
+  number_of_units: number;
+  is_critical: boolean;
+  recepient_name: string;
+  issuer_id: string;
+  date_time_of_issue: Date;
+  admitted_hospital: string;
+  contact_number: string;
+  case?: string;
+}
+
+export interface BloodRequirementSnapshot {
+  id?: string;
+  data?: BloodRequirement;
+}
+
 // APP DB
 const MEMBERSHIP_DB = {};
 
@@ -62,7 +90,9 @@ const INDIVIDUAL_USERS_DB = {
 };
 
 const DONATION_DETAILS_DB = {
-  ID: {},
+  ID: {
+    uid: "uid",
+  },
 };
 
 const CONSULTATION_DETAILS_DB = {
@@ -75,5 +105,3 @@ const USER_DOCUMENTS = {};
 // ========================================
 
 // ORGANIZATIONS
-
-export {};

@@ -1,0 +1,102 @@
+// Initialize a bare minimal ionic project (Without ionic-cli)
+npx degit gitlab:ionic-react-course/hello-world hello-world
+
+cd ./.....
+npm install
+
+npm i @ionic/react
+
+// THEME / COLOR Generator
+https://ionicframework.com/docs/theming/color-generator
+
+// Add to index.html
+<meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+/* Core CSS required for Ionic components to work properly */
+import "@ionic/react/css/core.css"; // for aligning text to center use ion-text-center
+
+/* Basic CSS for apps built with Ionic */
+import "@ionic/react/css/normalize.css";
+import "@ionic/react/css/structure.css";
+import "@ionic/react/css/typography.css";
+
+/* Optional CSS utils that can be commented out */
+import "@ionic/react/css/padding.css";  // for padding use ion-padding
+import "@ionic/react/css/float-elements.css";
+import "@ionic/react/css/text-alignment.css";
+import "@ionic/react/css/text-transformation.css";
+import "@ionic/react/css/flex-utils.css";
+import "@ionic/react/css/display.css";
+
+import { Plugins } from "@capacitor/core";
+const { SplashScreen } = Plugins;
+... // Rendering App
+SplashScreen.hide(); // To hide the splash screen
+
+npm i ionicons // https://ionicons.com/
+
+// Debugging on android emulator
+chrome://inspect
+
+npm i @capacitor/core --save-exact
+npm i @capacitor/cli --save-exact --save-dev
+npx cap init --web-dir build --npm-client npm Biorhythms com.example.myapp
+npx cap add android
+npm run build
+npx cap sync android
+cordova-res android --skip-config --copy OR cordova-res android --skip-config --copy --icon-background-source '#000000'
+
+Android Adaptive Icons are also supported. If you choose to use them, create the following additional file(s):
+resources/android/icon-foreground.png must be at least 432×432px
+resources/android/icon-background.png must be at least 432×432px
+
+https://github.com/ionic-team/cordova-res#adaptive-icons
+
+https://developer.android.com/studio/write/image-asset-studio?hl=es-419
+
+
+=======================================================================================================================
+
+// USING IONIC-CLI
+
+ionic -v // Version
+
+ionic --help // Documentation
+ionic <command> --help // Documentation about <command>
+
+ionic start <app-name | my-app> <template | blank> --type=react --capacitor
+
+Tweaks for package.json file is in image
+
+cd ./.....
+ionic serve (PORT: 8100)
+
+Livereload with capacitor
+ionic cap add android // Add android support
+ionic cap open android // Open in android studio
+ionic capacitor run android -l --external // Add to npm scripts. May need to specify path of IDE in capacitor.config.json
+
+An ionic app must only have one <IonApp> app at the document root
+For seperate pages, use <IonPage>
+All pages and routing must go inside <IonRouterOutlet>
+
+NOTE
+====
+https://github.com/ionic-team/ionic-framework/issues/22022 - Issue with ionic/react and ionic/react-router
+
+Route parameters
+================
+
+/items/:id
+
+const {id} = useParams<ParamsInterface>(); // Should be same as given in route
+
+Note: there's a small change in the way to use the Firebase JS SDK
+Since v8.0.0 of the firebase npm package, instead of
+  import * as firebase from 'firebase/app';
+please make sure to use
+  import firebase from 'firebase/app';
+as documented in the @firebase/app changelog.
+
+// UPDATING DATA
+https://firebase.google.com/docs/firestore/query-data/listen#web_3

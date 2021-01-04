@@ -14,7 +14,7 @@ import {
   personCircle as profileIcon,
 } from "ionicons/icons";
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route } from "react-router";
 
 import HomePage from "./pages/HomePage";
 import DonatePage from "./pages/DonatePage";

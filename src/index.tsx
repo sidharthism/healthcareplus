@@ -22,6 +22,8 @@ import "@ionic/react/css/padding.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+// App Global Styles
+import "./styles.css";
 
 const { SplashScreen } = Plugins;
 ReactDOM.render(<App />, document.getElementById("root"));

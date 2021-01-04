@@ -5,13 +5,12 @@ import {
 } from "@ionic/react";
 import { IonReactRouter as Router } from "@ionic/react-router";
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route } from "react-router";
 
 // App Authentication
 import { AuthContext, useAuthInit } from "./auth/auth";
 
 import AppTabs from "./AppTabs";
-import "./styles.css";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import NotFoundPage from "./pages/NotFoundPage";

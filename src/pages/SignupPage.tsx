@@ -65,19 +65,19 @@ const SignupPage: React.FC = () => {
   const handleSignup = async () => {
     if (!Validate()) {
       setStatus({ loading: false, error: true });
+      setPassword("");
       // console.log("Improper email or Passwords do not match");
     } else {
       try {
         setStatus({ loading: true, error: false });
-        const credential = await auth.createUserWithEmailAndPassword(
-          email,
-          password
-        );
+        // const credential =
+        await auth.createUserWithEmailAndPassword(email, password);
         // If succeeds, automatically calls onAuthStateChanged in App.
         // setStatus({ loading: false, error: false }); At this stage LoginPage component will be unmounted
         isNewUser = true;
       } catch (err) {
         setStatus({ loading: false, error: true });
+        setPassword("");
         console.log(err.message);
       }
     }
@@ -170,7 +170,7 @@ const SignupPage: React.FC = () => {
             },
           ]}
         />
-        <IonLoading isOpen={status.loading} />
+        <IonLoading cssClass="app-loading-indicator" isOpen={status.loading} />
       </IonContent>
     </IonPage>
   );

@@ -52,17 +52,17 @@ const LoginPage: React.FC = () => {
   const handleLogin = async () => {
     if (!Validate()) {
       setStatus({ loading: false, error: true });
+      setPassword("");
     } else {
       try {
         setStatus({ loading: true, error: false });
-        const credential = await auth.signInWithEmailAndPassword(
-          email,
-          password
-        );
+        // const credential =
+        await auth.signInWithEmailAndPassword(email, password);
         // If succeeds, automatically calls onAuthStateChanged in App.
         // setStatus({ loading: false, error: false }); At this stage LoginPage component will be unmounted
       } catch (err) {
         setStatus({ loading: false, error: true });
+        setPassword("");
         console.log(err.message);
       }
     }
@@ -146,7 +146,10 @@ const LoginPage: React.FC = () => {
             },
           ]}
         />
-        <IonLoading isOpen={status.loading} />
+        <IonLoading
+          cssClass="app-loading-indicator-main"
+          isOpen={status.loading}
+        />
       </IonContent>
     </IonPage>
   );

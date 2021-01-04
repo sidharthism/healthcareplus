@@ -6,6 +6,11 @@
   --background: #ffffff;
 }
 
+/* DOES NOT APPLY TO SHADOW ROOT ELEMENTS */
+.page-content-plain .inner-scroll {
+  padding-bottom: 64px;
+}
+
 .donate-tab {
   --color-selected: var(--ion-color-app-blood-color);
   --color-focused: var(--ion-color-app-blood-color);

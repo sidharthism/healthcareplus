@@ -1,4 +1,44 @@
+.requirements-text {
+  padding: 0 10px;
+}
+
 .blood-request-list.list-md,
 .blood-request-list.list-ios {
   background: #ffffff00;
+}
+
+.app-pull-refresh {
+  padding: 32px;
+  text-align: center;
+}
+
+@media screen and (max-height: 576px) {
+  .app-pull-refresh {
+    padding: 28px;
+  }
+}
+
+.app-pull-refresh ion-spinner {
+  height: 32px;
+  width: 32px;
+}
+
+/* .app-pull-refresh :host(.spinner-crescent) circle {
+  stroke-width: 6px !important;
+} */
+
+.app-loading-indicator-red {
+  --spinner-color: var(--ion-color-app-blood-color);
+  --height: 30px;
+  --width: 30px;
+}
+
+.app-loading-indicator-red .loading-wrapper.sc-ion-loading-md {
+  border-radius: 100%;
+}
+
+.app-loading-indicator-red .loading-wrapper .loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

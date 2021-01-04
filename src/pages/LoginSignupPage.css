@@ -17,3 +17,20 @@
     margin-bottom: 24px;
   }
 }
+
+/* NOT WORKING AS OF NOW */
+/* ion-loading.app-loading-indicator-main {
+  --spinner-color: var(--ion-color-primary);
+  --height: 30px;
+  --width: 30px;
+}
+
+ion-loading.app-loading-indicator .loading-wrapper.sc-ion-loading-md {
+  border-radius: 100%;
+}
+
+ion-loading.app-loading-indicator .loading-wrapper .loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
