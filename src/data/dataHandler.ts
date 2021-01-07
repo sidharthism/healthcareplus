@@ -20,7 +20,7 @@ export function getRequests(callback) {
 
 export function getRequestUpdates(callback) {
   const requirementsRef = firestore.collection("blood_requirement");
-  requirementsRef.where("blood_group", "==", "AB+").onSnapshot(
+  return requirementsRef.where("blood_group", "==", "AB+").onSnapshot(
     ({ docs }) => {
       const requests = docs.map((doc) => ({ id: doc.id, data: doc.data() }));
       callback(requests);

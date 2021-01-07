@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { auth as firebaseAuth } from "../firebase/firebase";
+import { firestore } from "../firebase/firebase";
 
 // For use by components within app after logging in
 interface Auth {
@@ -41,3 +42,10 @@ export function useAuthInit(): AuthInit {
   }, []);
   return authInit;
 }
+
+// Auth provider
+export const appAuth = firebaseAuth;
+
+export const addNewUserInfo = async (uId, userInfo) => {
+  await firestore.collection("users").doc(uId).set(userInfo);
+};

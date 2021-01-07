@@ -5,7 +5,7 @@ import {
 } from "@ionic/react";
 import { IonReactRouter as Router } from "@ionic/react-router";
 import React from "react";
-import { Redirect, Route } from "react-router";
+import { Redirect, Route, Switch } from "react-router";
 
 // App Authentication
 import { AuthContext, useAuthInit } from "./auth/auth";

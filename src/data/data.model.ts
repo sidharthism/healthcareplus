@@ -1,4 +1,5 @@
 export enum BloodGroup {
+  NULL = "",
   A_p = "A+",
   A_n = "A-",
   B_p = "B+",

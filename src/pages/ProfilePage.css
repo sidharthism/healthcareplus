@@ -1,0 +1,52 @@
+ion-item {
+  --background: #ffffffb5;
+}
+
+.app-profile-settings {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.app-avatar-user::part(image) {
+  border-radius: 4px;
+  width: 64px;
+}
+
+.app-avatar-user {
+  margin-inline-end: 16px;
+}
+
+.item-interactive-disabled.sc-ion-label-md-h:not(.item-multiple-inputs),
+.item-interactive-disabled:not(.item-multiple-inputs) .sc-ion-label-md-h,
+.item-interactive-disabled.sc-ion-label-ios-h:not(.item-multiple-inputs),
+.item-interactive-disabled:not(.item-multiple-inputs) .sc-ion-label-ios-h {
+  opacity: 1;
+}
+
+.app-detail-user h2 {
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--ion-color-primary);
+}
+
+.app-basic-info-user h2 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ion-color-primary);
+}
+
+.app-basic-info-user p {
+  color: #808080;
+}
+
+.app-basic-info-icon {
+  margin-right: 4px;
+}
+
+ion-text {
+  vertical-align: top;
+}
+
+.alert-title.sc-ion-alert-md {
+  color: var(--ion-color-primary);
+}

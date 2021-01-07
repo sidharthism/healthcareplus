@@ -35,9 +35,9 @@ const DonatePage: React.FC = () => {
 
   // Fetch requests for the first time
   useEffect(() => {
-    getRequests((reqs) => {
-      setStatus({ loading: false, requests: reqs });
-    });
+    // getRequests((reqs) => {
+    //   setStatus({ loading: false, requests: reqs });
+    // });
     // Updating data
     // setInterval(() => {
     //   getRequests((reqs) => {

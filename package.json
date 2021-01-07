@@ -11,7 +11,7 @@
     "@capacitor/android": "2.4.2",
     "@capacitor/core": "2.4.2",
     "@ionic/react": "5.4.0-dev.202009041201.3d9e296",
-    "@ionic/react-router": "5.4.0-dev.202009041201.3d9e296",
+    "@ionic/react-router": "^5.4.0-dev.202009041201.3d9e296",
     "firebase": "^8.2.1",
     "ionicons": "^5.0.0",
     "react": "^16.13.0",

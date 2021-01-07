@@ -21,9 +21,7 @@ import "./LoginSignupPage.css";
 import { Redirect } from "react-router-dom";
 
 // Authentication Context
-import { useAuth } from "../auth/auth";
-// Firebase auth
-import { auth } from "../firebase/firebase";
+import { appAuth as auth, useAuth } from "../auth/auth";
 
 const LoginPage: React.FC = () => {
   // States

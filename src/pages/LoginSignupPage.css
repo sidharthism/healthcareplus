@@ -34,3 +34,52 @@ ion-loading.app-loading-indicator .loading-wrapper .loading-spinner {
   align-items: center;
   justify-content: center;
 } */
+
+/* FOR SIGN UP PAGE */
+
+/* Popover Interface: set color for the popover using Item's CSS variables */
+.app-select-blood-group .select-interface-option {
+  --color: var(--ion-color-app-blood-color);
+  /* --color-hover: #79193b; */
+}
+
+/* Action Sheet Interface: set color for the action sheet using its button CSS variables */
+.app-select-blood-group .select-interface-option {
+  --button-color: var(--ion-color-app-blood-color);
+  /* --button-color-hover: #79193b; */
+}
+
+/* Alert Interface: set color for alert options (single selection) */
+.app-select-blood-group .select-interface-option .alert-radio-label {
+  color: var(--ion-color-app-blood-color);
+}
+
+/* Alert Interface: set color for alert options (multiple selection) */
+.app-select-blood-group .select-interface-option .alert-checkbox-label {
+  color: var(--ion-color-app-blood-color);
+}
+
+/* Alert Interface: set color for checked alert options (single selection) */
+.app-select-blood-group
+  .select-interface-option[aria-checked="true"]
+  .alert-radio-label {
+  color: var(--ion-color-app-blood-color);
+}
+
+/* .alert-title.sc-ion-alert-md,
+.alert-title.sc-ion-alert-ios {
+  color: var(--ion-color-app-blood-color);
+} */
+
+.alert-radio-inner.sc-ion-alert-md {
+  background-color: var(--ion-color-app-blood-color);
+}
+
+[aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md
+/* ,[aria-checked="true"].sc-ion-alert-ios .alert-radio-inner.sc-ion-alert-ios*/ {
+  border-color: var(--ion-color-app-blood-color);
+}
+
+/* .select-text::part(text) {
+  color: var(--ion-color-app-blood-color);
+} */
