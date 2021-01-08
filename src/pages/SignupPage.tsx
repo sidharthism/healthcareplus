@@ -23,7 +23,8 @@ import {
 import { BloodGroup } from "../data/data.model";
 
 // Authentication Context and auth provider
-import { appAuth as auth, useAuth, addNewUserInfo } from "../auth/auth";
+import { appAuth as auth, useAuth } from "../auth/auth";
+import { addNewUserInfo } from "../data/dataHandler";
 
 import logo from "../assets/logo_large.png";
 import "./LoginSignupPage.css";
@@ -73,10 +74,10 @@ const SignupPage: React.FC = () => {
     return (
       email.indexOf("@") !== -1 &&
       email.indexOf(".") !== -1 &&
-      fullName != "" &&
-      dateOfBirth != "" &&
-      bloodGroup != BloodGroup.NULL &&
-      phoneNumber.length == 10 &&
+      fullName !== "" &&
+      dateOfBirth !== "" &&
+      bloodGroup !== BloodGroup.NULL &&
+      phoneNumber.length === 10 &&
       password !== "" &&
       password === confirmPassword
     );
@@ -105,11 +106,10 @@ const SignupPage: React.FC = () => {
         );
         // ASYNC PROCESS, Set the details of New User
         addNewUserInfo(user.uid, {
-          full_name: fullName,
-          date_of_birth: dateOfBirth,
-          blood_group: bloodGroup,
-          phoneNumber: phoneNumber,
-          weight: 0,
+          fullName,
+          dateOfBirth,
+          bloodGroup,
+          phoneNumber,
         });
 
         // If succeeds, automatically calls onAuthStateChanged in App.

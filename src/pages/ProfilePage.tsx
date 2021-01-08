@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import {
   IonPage,
@@ -19,6 +19,8 @@ import {
   IonChip,
   IonActionSheet,
   IonAlert,
+  IonLoading,
+  IonModal,
 } from "@ionic/react";
 import {
   settings as settingsIcon,
@@ -33,8 +35,14 @@ import bloodGroupIcon from "../assets/svg/blood_group.svg";
 
 import "./ProfilePage.css";
 
-// Get the firebase auth service
-import { auth } from "../firebase/firebase";
+import { appAuth as auth, useAuth } from "../auth/auth";
+import { UserInformation } from "../data/data.model";
+import {
+  getCurrentUserInfo,
+  calculateUserAgeFromDateOfBirth,
+} from "../data/dataHandler";
+
+import EditProfilePage from "./EditProfilePage";
 
 // LogOut
 // Causes onAuthStateChanged to be fired
@@ -77,6 +85,7 @@ const AppActionSheet: React.FC<any> = ({
   isOpen,
   handleActionDismiss,
   handleConfirmLogOut,
+  handleEditProfile,
 }) => {
   const history = useHistory();
   return (
@@ -89,9 +98,7 @@ const AppActionSheet: React.FC<any> = ({
         {
           text: "Edit Profile",
           icon: editIcon,
-          handler: () => {
-            history.push("/my/profile/settings");
-          },
+          handler: handleEditProfile,
         },
         {
           text: "Log Out",
@@ -115,14 +122,32 @@ const AppActionSheet: React.FC<any> = ({
 };
 
 const ProfilePage: React.FC = () => {
+  const { userId } = useAuth();
+  const [currentUserInfo, setCurrentUserInfo] = useState<UserInformation>();
+  const [loading, setLoading] = useState<boolean>(true);
   const [showActionSheet, setShowActionSheet] = useState<boolean>(false);
   const [showAlertConfirm, setShowAlertConfirm] = useState<boolean>(false);
+  const [editMode, setEditMode] = useState<boolean>(false);
+  useEffect(() => {
+    getCurrentUserInfo(userId, (userInfo) => {
+      // console.log(userInfo);
+      setCurrentUserInfo(userInfo);
+      setLoading(false);
+    });
+  }, [userId]); // [userId, loading]
+  // Handlers
   const handleAction = (state: boolean) => {
     setShowActionSheet(state);
   };
   const handleAlert = (state: boolean) => {
     setShowAlertConfirm(state);
   };
+  const handleEdit = (state: boolean) => {
+    setEditMode(state);
+  };
+  if (loading) {
+    return <IonLoading isOpen />;
+  }
   return (
     <IonPage>
       <IonHeader>
@@ -147,8 +172,11 @@ const ProfilePage: React.FC = () => {
         <IonItem className="app-detail-container-user">
           <IonImg className="app-avatar-user" slot="start" src={avatarImage} />
           <IonLabel className="app-detail-user">
-            <h2>{"John Doe"}</h2>
-            <p>{"34 Years"}</p>
+            <h2>{currentUserInfo.fullName}</h2>
+            <p>
+              {calculateUserAgeFromDateOfBirth(currentUserInfo.dateOfBirth) +
+                " Years"}
+            </p>
           </IonLabel>
         </IonItem>
         <IonItem>
@@ -157,14 +185,20 @@ const ProfilePage: React.FC = () => {
             <IonRow>
               <IonCol>
                 <IonIcon className="app-basic-info-icon" icon={weightIcon} />
-                <IonText color="light">{"65 Kg"}</IonText>
+                <IonText color="light">
+                  {currentUserInfo.weight === 0
+                    ? "- Kg"
+                    : currentUserInfo.weight + " Kg"}
+                </IonText>
               </IonCol>
               <IonCol>
                 <IonIcon
                   className="app-basic-info-icon"
                   icon={bloodGroupIcon}
                 />
-                <IonText color="app-blood-color">{"AB+"}</IonText>
+                <IonText color="app-blood-color">
+                  {currentUserInfo.bloodGroup}
+                </IonText>
               </IonCol>
             </IonRow>
           </IonLabel>
@@ -210,15 +244,26 @@ const ProfilePage: React.FC = () => {
           </IonLabel>
           <IonIcon size="small" slot="end" color="primary" icon={arrowIcon} />
         </IonItem>
-        <AppActionSheet
-          isOpen={showActionSheet}
-          handleActionDismiss={(state) => handleAction(state)}
-          handleConfirmLogOut={(state) => handleAlert(state)}
-        />
-        <AppAlertConfirm
-          isOpen={showAlertConfirm}
-          handleAlertDismiss={(state) => handleAlert(state)}
-        />
+        {showActionSheet && (
+          <AppActionSheet
+            isOpen={showActionSheet}
+            handleActionDismiss={(state) => handleAction(state)}
+            handleConfirmLogOut={(state) => handleAlert(state)}
+            handleEditProfile={() => handleEdit(true)}
+          />
+        )}
+        {showAlertConfirm && (
+          <AppAlertConfirm
+            isOpen={showAlertConfirm}
+            handleAlertDismiss={(state) => handleAlert(state)}
+          />
+        )}
+        {editMode && (
+          <EditProfilePage
+            isOpen={editMode}
+            onDismiss={() => handleEdit(false)}
+          />
+        )}
       </IonContent>
     </IonPage>
   );

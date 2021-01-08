@@ -7,3 +7,5 @@
 7. 3. Abrupt redirection to login without animation on logging out
 8. Main app-loading-indicator styles are not being applied. (LoginSignupPage.css)
 9. Issue with sub routes - does not unmount and is visible without backbutton on pressing hardware backbutton (/my/profile/settings) - almost fixed with defaultHref (https://stackoverflow.com/questions/56516438/ionic4-react-router-ionbackbutton-does-not-appear)
+10. Using async await and .then in dataHandler.ts (Check thoroughly for issues with signup)
+11. Issue on dismissing model overlay with hardware backbutton

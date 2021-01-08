@@ -16,17 +16,20 @@ import "./DonatePage.css";
 // import sample_data from "../data/sampleData";
 import BloodRequestCard from "../components/BloodRequestCard";
 
+import { useAuth } from "../auth/auth";
+
 // Get Requests Handler
 import { getRequests, getRequestUpdates } from "../data/dataHandler";
 
 const DonatePage: React.FC = () => {
+  const { userId } = useAuth();
   // Requests status state
   const [status, setStatus] = useState({ loading: true, requests: [] });
 
   // Pull to refresh requests data
   const refresh = (e) => {
     e.preventDefault();
-    getRequests((reqs) => {
+    getRequests(userId, (reqs) => {
       setStatus({ loading: false, requests: reqs });
       console.log("refreshed");
     });
@@ -45,11 +48,11 @@ const DonatePage: React.FC = () => {
     //   });
     // }, 5000);
     // Subscribing to data updates
-    getRequestUpdates((reqs) => {
+    getRequestUpdates(userId, (reqs) => {
       // console.log(reqs);
       setStatus({ loading: false, requests: reqs });
     });
-  }, []);
+  }, [userId]);
 
   return (
     <IonPage>

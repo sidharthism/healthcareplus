@@ -1,3 +1,4 @@
+// BLOOD REQUIREMENTS AND DONATION DATA MODELS
 export enum BloodGroup {
   NULL = "",
   A_p = "A+",
@@ -106,3 +107,12 @@ const USER_DOCUMENTS = {};
 // ========================================
 
 // ORGANIZATIONS
+// =====================
+
+export interface UserInformation {
+  fullName: string;
+  dateOfBirth: string;
+  bloodGroup: BloodGroup;
+  phoneNumber: string;
+  weight?: number;
+}
