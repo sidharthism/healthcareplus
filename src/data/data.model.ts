@@ -114,5 +114,5 @@ export interface UserInformation {
   dateOfBirth: string;
   bloodGroup: BloodGroup;
   phoneNumber: string;
-  weight?: number;
+  weight?: number | string;
 }

@@ -25,6 +25,7 @@ import "./styles.css";
 
 // Authentication Context
 import { useAuth } from "./auth/auth";
+import EditProfilePage from "./pages/EditProfilePage";
 
 const AppTabs: React.FC = () => {
   const { loggedIn } = useAuth();
@@ -45,6 +46,9 @@ const AppTabs: React.FC = () => {
         </Route>
         <Route exact path="/my/profile">
           <ProfilePage />
+        </Route>
+        <Route exact path="/my/profile/edit">
+          <EditProfilePage />
         </Route>
         <Redirect exact path="/my" to="/my/home" />
         {/* DEFAULT ROUTE - Valid? */}

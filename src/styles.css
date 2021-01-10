@@ -30,3 +30,13 @@
 .app-button-outline {
   background: #ffffff;
 }
+
+/* For pages that appears on top */
+.app-modal-page {
+  --background: #ffffff00;
+}
+
+.app-error-text {
+  color: var(--ion-color-app-blood-color);
+  padding-left: 8px;
+}

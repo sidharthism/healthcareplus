@@ -6,6 +6,7 @@ import {
   IonHeader,
   IonTitle,
   IonToolbar,
+  IonRouterLink as RouterLink,
   IonText,
   IonButton,
   IonItem,
@@ -19,6 +20,7 @@ import {
   IonActionSheet,
   IonAlert,
   IonLoading,
+  IonModal,
 } from "@ionic/react";
 import {
   settings as settingsIcon,
@@ -38,8 +40,9 @@ import { UserInformation } from "../data/data.model";
 import {
   getCurrentUserInfo,
   calculateUserAgeFromDateOfBirth,
-  eligibleToDonate,
 } from "../data/dataHandler";
+
+import EditProfilePage from "./EditProfilePage";
 
 // LogOut
 // Causes onAuthStateChanged to be fired
@@ -82,7 +85,7 @@ const AppActionSheet: React.FC<any> = ({
   isOpen,
   handleActionDismiss,
   handleConfirmLogOut,
-  // handleEditProfile,
+  handleEditProfile,
 }) => {
   const history = useHistory();
   return (
@@ -95,9 +98,7 @@ const AppActionSheet: React.FC<any> = ({
         {
           text: "Edit Profile",
           icon: editIcon,
-          handler: () => {
-            history.push("/my/profile/edit");
-          },
+          handler: handleEditProfile,
         },
         {
           text: "Log Out",
@@ -122,25 +123,15 @@ const AppActionSheet: React.FC<any> = ({
 
 const ProfilePage: React.FC = () => {
   const { userId } = useAuth();
-  const [loading, setLoading] = useState<boolean>(true);
-  const [attachUpdateListener, setAttachUpdateListener] = useState<boolean>(
-    false
-  );
   const [currentUserInfo, setCurrentUserInfo] = useState<UserInformation>();
-  const [isEligibleToDonate, setIsEligibleToDonate] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [showActionSheet, setShowActionSheet] = useState<boolean>(false);
   const [showAlertConfirm, setShowAlertConfirm] = useState<boolean>(false);
-  // const [editMode, setEditMode] = useState<boolean>(false);
+  const [editMode, setEditMode] = useState<boolean>(false);
   useEffect(() => {
-    getCurrentUserInfo(userId, (userInfo: UserInformation) => {
+    getCurrentUserInfo(userId, (userInfo) => {
       // console.log(userInfo);
       setCurrentUserInfo(userInfo);
-      setIsEligibleToDonate(
-        eligibleToDonate(
-          calculateUserAgeFromDateOfBirth(userInfo.dateOfBirth),
-          userInfo.weight
-        )
-      );
       setLoading(false);
     });
   }, [userId]); // [userId, loading]
@@ -151,37 +142,12 @@ const ProfilePage: React.FC = () => {
   const handleAlert = (state: boolean) => {
     setShowAlertConfirm(state);
   };
-  // const handleEdit = (state: boolean) => {
-  //   setEditMode(state);
-  // };
-
+  const handleEdit = (state: boolean) => {
+    setEditMode(state);
+  };
   if (loading) {
     return <IonLoading isOpen />;
   }
-
-  // const listenToUserBasicInfoUpdates =
-  (() => {
-    // if(!.getEventListeners(window).APP_UPDATED_USER_BASIC_INFO))
-    if (!attachUpdateListener) {
-      window.addEventListener("APP_UPDATED_USER_BASIC_INFO", () => {
-        getCurrentUserInfo(userId, (userInfo: UserInformation) => {
-          // console.log(userInfo);
-          setCurrentUserInfo(userInfo);
-          setIsEligibleToDonate(
-            eligibleToDonate(
-              calculateUserAgeFromDateOfBirth(userInfo.dateOfBirth),
-              userInfo.weight
-            )
-          );
-        });
-      });
-      // console.log("Update listener attached!");
-      setAttachUpdateListener(true);
-    }
-  })();
-
-  // listenToUserBasicInfoUpdates();
-
   return (
     <IonPage>
       <IonHeader>
@@ -239,11 +205,7 @@ const ProfilePage: React.FC = () => {
           <IonText slot="end" color="app-blood-color">
             {"Donate"}
           </IonText>
-          <IonToggle
-            disabled={!isEligibleToDonate}
-            slot="end"
-            color="app-blood-color"
-          />
+          <IonToggle slot="end" color="app-blood-color" />
         </IonItem>
         <IonItem>
           <IonLabel className="app-basic-info-user">
@@ -287,7 +249,7 @@ const ProfilePage: React.FC = () => {
             isOpen={showActionSheet}
             handleActionDismiss={(state) => handleAction(state)}
             handleConfirmLogOut={(state) => handleAlert(state)}
-            // handleEditProfile={() => handleEdit(true)}
+            handleEditProfile={() => handleEdit(true)}
           />
         )}
         {showAlertConfirm && (
@@ -296,12 +258,12 @@ const ProfilePage: React.FC = () => {
             handleAlertDismiss={(state) => handleAlert(state)}
           />
         )}
-        {/* {editMode && (
+        {editMode && (
           <EditProfilePage
             isOpen={editMode}
             onDismiss={() => handleEdit(false)}
           />
-        )} */}
+        )}
       </IonContent>
     </IonPage>
   );

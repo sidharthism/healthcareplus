@@ -39,6 +39,13 @@ export const getUserBloodGroup = (uId, callback) => {
     });
 };
 
+export const eligibleToDonate = (a, w, ld = 0): boolean => {
+  let age = Number(a),
+    weight = Number(w),
+    lastDonated = new Date(ld);
+  return age >= 18 && age < 65 && weight >= 50;
+};
+
 export function getRequests(uId, callback) {
   getUserBloodGroup(uId, (bloodGroup) => {
     const requirementsRef = firestore.collection("blood_requirement");
@@ -89,6 +96,18 @@ export const getCurrentUserInfo = async (uId, callback) => {
   try {
     const snapshot = await userRef.get();
     callback(toAppUserInfo(snapshot.data()));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const updateCurrentUserBasicInfo = async (uId, newWeight, callback?) => {
+  const userRef = firestore.collection("users").doc(uId);
+  try {
+    const snapshot = await userRef.update({
+      weight: Number(newWeight),
+    });
+    callback("Weight updated successfully!");
   } catch (err) {
     console.log(err);
   }
