@@ -1,9 +1,9 @@
 // Firebase
 import { firestore } from "../firebase/firebase";
 
-import { BloodGroup } from "./data.model";
+import { BloodGroup, BloodRequirement } from "./data.model";
 
-// BLOOD REQUIREMENTS
+// DATA FORMAT CONVERTERS
 
 function toAppUserInfo(firestoreUserInfo) {
   return {
@@ -25,6 +25,38 @@ function toFirestoreUserInfo(appUserInfo) {
   };
 }
 
+function toAppBloodRequirement(firestoreBloodRequirement) {
+  return {
+    admittedHospital: firestoreBloodRequirement.admitted_hospital,
+    bloodGroup: firestoreBloodRequirement.blood_group,
+    contactNumber: firestoreBloodRequirement.contact_number,
+    dateTimeOfIssue: firestoreBloodRequirement.date_time_of_issue,
+    isCritical: firestoreBloodRequirement.is_critical,
+    issuerId: firestoreBloodRequirement.issuer_id,
+    numberOfUnits: firestoreBloodRequirement.number_of_units,
+    recepientName: firestoreBloodRequirement.recepient_name,
+  };
+}
+
+function toFirestoreBloodRequirement(appBloodRequirement) {
+  return {
+    admitted_hospital: appBloodRequirement.admittedHospital,
+    blood_group: appBloodRequirement.bloodGroup,
+    contact_number: "+91" + appBloodRequirement.contactNumber,
+    date_time_of_issue: new Date(
+      appBloodRequirement.dateTimeOfIssue
+    ).toISOString(),
+    is_critical: appBloodRequirement.isCritical,
+    issuer_id: appBloodRequirement.issuerId,
+    number_of_units:
+      Number(appBloodRequirement.numberOfUnits) < 10
+        ? "0" + appBloodRequirement.numberOfUnits
+        : appBloodRequirement.numberOfUnits,
+    recepient_name: appBloodRequirement.recepientName,
+  };
+}
+
+// BLOOD REQUIREMENTS
 // GET A SPECIFIC FIELD - Blood Group
 export const getUserBloodGroup = (uId, callback) => {
   const userRef = firestore.collection("users").doc(uId);
@@ -46,6 +78,22 @@ export const eligibleToDonate = (a, w, ld = 0): boolean => {
   return age >= 18 && age < 65 && weight >= 50;
 };
 
+// NEW BLOOD REQUEST
+export const createNewBloodRequest = async (
+  newReqData: BloodRequirement,
+  callback?
+) => {
+  const requirementsRef = firestore.collection("blood_requirement");
+  try {
+    await requirementsRef.add(toFirestoreBloodRequirement(newReqData));
+    callback(
+      "New Requirement created successfully! Waiting for verification and will be dispatched thereafter."
+    );
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export function getRequests(uId, callback) {
   getUserBloodGroup(uId, (bloodGroup) => {
     const requirementsRef = firestore.collection("blood_requirement");
@@ -54,7 +102,10 @@ export function getRequests(uId, callback) {
       .get()
       .then(({ docs }) => {
         // snapshot.docs
-        const requests = docs.map((doc) => ({ id: doc.id, data: doc.data() }));
+        const requests = docs.map((doc) => ({
+          id: doc.id,
+          data: toAppBloodRequirement(doc.data()),
+        }));
         callback(requests);
       })
       .catch((err) => {
@@ -69,7 +120,10 @@ export function getRequestUpdates(uId, callback) {
     const requirementsRef = firestore.collection("blood_requirement");
     return requirementsRef.where("blood_group", "==", bloodGroup).onSnapshot(
       ({ docs }) => {
-        const requests = docs.map((doc) => ({ id: doc.id, data: doc.data() }));
+        const requests = docs.map((doc) => ({
+          id: doc.id,
+          data: toAppBloodRequirement(doc.data()),
+        }));
         callback(requests);
       },
       (err) => {
@@ -78,6 +132,25 @@ export function getRequestUpdates(uId, callback) {
       }
     );
   });
+}
+
+export function getUserIssuedRequests(uId, callback) {
+  const requirementsRef = firestore.collection("blood_requirement");
+  requirementsRef
+    .where("issuer_id", "==", uId)
+    .get()
+    .then(({ docs }) => {
+      // snapshot.docs
+      const requests = docs.map((doc) => ({
+        id: doc.id,
+        data: toAppBloodRequirement(doc.data()),
+      }));
+      callback(requests);
+    })
+    .catch((err) => {
+      console.log(err.message);
+      callback([]);
+    });
 }
 
 // USER DATA

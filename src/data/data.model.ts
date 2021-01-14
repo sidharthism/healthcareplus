@@ -12,15 +12,19 @@ export enum BloodGroup {
 }
 
 export interface BloodRequirement {
-  blood_group: BloodGroup;
-  number_of_units: number;
-  is_critical: boolean;
-  recepient_name: string;
-  issuer_id: string;
-  date_time_of_issue: Date;
-  admitted_hospital: string;
-  contact_number: string;
+  bloodGroup: BloodGroup;
+  numberOfUnits: number;
+  isCritical: boolean;
+  recepientName: string;
+  issuerId: string;
+  dateTimeOfIssue: Date;
+  admittedHospital: string;
+  contactNumber: string;
   case?: string;
+  bystanderName?: string;
+  recepientAge?: number;
+  bleedingTime?: string;
+  verifiedId?: string;
 }
 
 export interface BloodRequirementSnapshot {

@@ -26,6 +26,7 @@ import "./styles.css";
 // Authentication Context
 import { useAuth } from "./auth/auth";
 import EditProfilePage from "./pages/EditProfilePage";
+import NewRequestPage from "./pages/NewRequestPage";
 
 const AppTabs: React.FC = () => {
   const { loggedIn } = useAuth();
@@ -43,6 +44,9 @@ const AppTabs: React.FC = () => {
         </Route>
         <Route exact path="/my/request">
           <RequestPage />
+        </Route>
+        <Route exact path="/my/request/new">
+          <NewRequestPage />
         </Route>
         <Route exact path="/my/profile">
           <ProfilePage />

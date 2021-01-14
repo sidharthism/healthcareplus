@@ -31,7 +31,7 @@ const DonatePage: React.FC = () => {
     e.preventDefault();
     getRequests(userId, (reqs) => {
       setStatus({ loading: false, requests: reqs });
-      console.log("refreshed");
+      console.log("Refreshed");
     });
     e.detail.complete();
   };

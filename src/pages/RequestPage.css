@@ -1,0 +1,26 @@
+.app-button-fab-blood-request {
+  --ripple-color: var(--ion-color-app-blood-color);
+  --background: #ffffff;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  /* --padding-end: 8px;
+  --padding-bottom: 8px; */
+}
+
+/* Loading Indicator */
+
+.app-loading-indicator-red {
+  --spinner-color: var(--ion-color-app-blood-color);
+  --height: 30px;
+  --width: 30px;
+}
+
+.app-loading-indicator-red .loading-wrapper.sc-ion-loading-md {
+  border-radius: 100%;
+}
+
+.app-loading-indicator-red .loading-wrapper .loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

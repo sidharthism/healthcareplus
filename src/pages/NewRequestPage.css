@@ -1,0 +1,39 @@
+ion-item {
+  --background: #ffffffb5;
+}
+
+.app-list-issued-blood-requests.list-md,
+.app-list-issued-blood-requests.list-ios {
+  background: #ffffff00;
+}
+.app-range-indicator-number-of-units {
+  margin: 10px 0 10px 10px;
+  font-weight: 400;
+}
+
+.app-buttons-container-clear-border {
+  --border-color: #ffffff00;
+  margin-top: 16px;
+}
+
+.app-item-input-container-clear-border {
+  --border-color: #ffffff00;
+}
+
+/* Loading Indicator */
+
+.app-loading-indicator-red {
+  --spinner-color: var(--ion-color-app-blood-color);
+  --height: 30px;
+  --width: 30px;
+}
+
+.app-loading-indicator-red .loading-wrapper.sc-ion-loading-md {
+  border-radius: 100%;
+}
+
+.app-loading-indicator-red .loading-wrapper .loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

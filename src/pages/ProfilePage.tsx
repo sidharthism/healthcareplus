@@ -245,7 +245,7 @@ const ProfilePage: React.FC = () => {
             color="app-blood-color"
           />
         </IonItem>
-        <IonItem>
+        <IonItem disabled>
           <IonLabel className="app-basic-info-user">
             <h2>{"Emergency Contacts"}</h2>
             <IonRow>
@@ -258,7 +258,7 @@ const ProfilePage: React.FC = () => {
             </IonRow>
           </IonLabel>
         </IonItem>
-        <IonItem button>
+        <IonItem button disabled>
           <IonLabel className="app-basic-info-user">
             <h2>{"Chronic Conditions"}</h2>
             <IonChip color="primary">{"Asthma"}</IonChip>
@@ -267,7 +267,7 @@ const ProfilePage: React.FC = () => {
           </IonLabel>
           <IonIcon size="small" slot="end" color="primary" icon={arrowIcon} />
         </IonItem>
-        <IonItem button>
+        <IonItem button disabled>
           <IonLabel className="app-basic-info-user">
             <h2>{"Medicines"}</h2>
             <IonChip color="primary">{"Medicine 1"}</IonChip>
@@ -276,7 +276,7 @@ const ProfilePage: React.FC = () => {
           </IonLabel>
           <IonIcon size="small" slot="end" color="primary" icon={arrowIcon} />
         </IonItem>
-        <IonItem button>
+        <IonItem button disabled>
           <IonLabel className="app-basic-info-user">
             <h2>{"Health Vault"}</h2>
           </IonLabel>

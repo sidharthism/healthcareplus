@@ -13,18 +13,18 @@ import "./BloodRequestCard.css";
 import { BloodRequirement } from "../data/data.model";
 
 const BloodRequestCard: React.FC<BloodRequirement> = ({
-  blood_group,
-  number_of_units,
-  is_critical,
-  recepient_name,
-  date_time_of_issue,
-  admitted_hospital,
-  contact_number,
+  bloodGroup,
+  numberOfUnits,
+  isCritical,
+  recepientName,
+  dateTimeOfIssue,
+  admittedHospital,
+  contactNumber,
 }) => {
   return (
     <IonCard className="ion-padding blood-request-card">
       <IonCardHeader>
-        {is_critical && (
+        {isCritical && (
           <IonText className="is-critical" color="app-blood-color">
             {"CRITICAL"}
           </IonText>
@@ -32,7 +32,7 @@ const BloodRequestCard: React.FC<BloodRequirement> = ({
         <IonCardTitle className="card-title">
           <IonBadge color="app-blood-color" className="number-of-units">
             <IonText>
-              <span>{number_of_units}</span>
+              <span>{numberOfUnits}</span>
             </IonText>
           </IonBadge>
           <br />
@@ -42,15 +42,15 @@ const BloodRequestCard: React.FC<BloodRequirement> = ({
         </IonCardTitle>
         <IonCardSubtitle>
           <IonText className="blood-group" color="app-blood-color">
-            {blood_group}
+            {bloodGroup}
           </IonText>
         </IonCardSubtitle>
       </IonCardHeader>
       <IonCardContent>
-        <p>{recepient_name}</p>
-        <p>{"Issued on " + new Date(date_time_of_issue).toDateString()}</p>
-        <p>{admitted_hospital}</p>
-        <p>{"Ph no. " + contact_number}</p>
+        <p>{recepientName}</p>
+        <p>{"Issued on " + new Date(dateTimeOfIssue).toDateString()}</p>
+        <p>{admittedHospital}</p>
+        <p>{"Ph no. " + contactNumber}</p>
       </IonCardContent>
     </IonCard>
   );

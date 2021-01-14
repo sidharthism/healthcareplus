@@ -1,0 +1,19 @@
+/* Blood Request Item */
+.app-item-number-of-units {
+  font-weight: 600;
+  padding: 7.5px;
+  /* border-radius: 100%; */
+  vertical-align: middle;
+  font-size: 28px;
+  margin-inline-end: 16px;
+  /* margin-bottom: 5px; */
+}
+
+/* .app-item-number-of-units.ion-color.ion-color-app-blood-color.md.hydrated */
+/* ::slotted([slot="start"]) {
+  margin-inline-end: 16px;
+} */
+
+.app-item-number-of-units span {
+  vertical-align: middle;
+}
