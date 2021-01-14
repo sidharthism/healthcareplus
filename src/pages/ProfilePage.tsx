@@ -191,7 +191,7 @@ const ProfilePage: React.FC = () => {
           </IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding page-content">
+      <IonContent className="ion-padding page-content app-page-profile">
         <div className="app-profile-settings">
           <IonButton
             color="medium"

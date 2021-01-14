@@ -1,4 +1,14 @@
 /* Blood Request Item */
+
+/* .app-item-number-of-units .item.md,
+.app-item-number-of-units .item.ios {
+  background: #ffffff00;
+} */
+
+.app-item-blood-request {
+  --background: #ffffffb5;
+}
+
 .app-item-number-of-units {
   font-weight: 600;
   padding: 7.5px;

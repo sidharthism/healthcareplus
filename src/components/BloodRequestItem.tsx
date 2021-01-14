@@ -11,7 +11,7 @@ export const BloodRequestItem: React.FC<BloodRequirement> = ({
   numberOfUnits,
 }) => {
   return (
-    <IonItem button>
+    <IonItem button className="app-item-blood-request">
       <IonBadge
         slot="start"
         color="app-blood-color"

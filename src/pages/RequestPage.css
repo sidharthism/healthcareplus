@@ -1,3 +1,8 @@
+.app-list-issued-blood-requests.list-md,
+.app-list-issued-blood-requests.list-ios {
+  background: #ffffff00;
+}
+
 .app-button-fab-blood-request {
   --ripple-color: var(--ion-color-app-blood-color);
   --background: #ffffff;

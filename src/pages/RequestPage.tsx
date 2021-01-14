@@ -55,10 +55,6 @@ const RequestPage: React.FC = () => {
     });
   }, [userId]);
 
-  if (status.loading) {
-    return <IonLoading isOpen cssClass="app-loading-indicator-red" />;
-  }
-
   // const listenToCreatedRequirementUpdates =
   (() => {
     // if(!.getEventListeners(window).APP_UPDATED_USER_BASIC_INFO))

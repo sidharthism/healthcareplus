@@ -10,6 +10,9 @@ import {
   IonLoading,
   IonRefresher,
   IonSpinner,
+  IonLabel,
+  IonSegment,
+  IonSegmentButton,
 } from "@ionic/react";
 
 import "./DonatePage.css";
@@ -62,6 +65,27 @@ const DonatePage: React.FC = () => {
             <IonText>{"Donate"}</IonText>
           </IonTitle>
         </IonToolbar>
+        <IonToolbar color="app-blood-color">
+          <IonSegment
+            // color="app-blood-color"
+            onIonChange={(e) => console.log("Segment selected", e.detail.value)}
+            value="Requests"
+          >
+            <IonSegmentButton
+              className="app-segment-button-donate-page"
+              value="Requests"
+            >
+              <IonLabel>{"Requests"}</IonLabel>
+            </IonSegmentButton>
+            <IonSegmentButton
+              disabled
+              className="app-segment-button-donate-page"
+              value="History"
+            >
+              <IonLabel>{"History"}</IonLabel>
+            </IonSegmentButton>
+          </IonSegment>
+        </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding page-content">
         <IonRefresher
@@ -75,7 +99,7 @@ const DonatePage: React.FC = () => {
           </div>
         </IonRefresher>
         <IonText className="requirements-text" color="primary">
-          {"Requirements"}
+          {"Requests"}
         </IonText>
         <IonText color="app-blood-color">{status.requests.length}</IonText>
         <IonList className="blood-request-list">
